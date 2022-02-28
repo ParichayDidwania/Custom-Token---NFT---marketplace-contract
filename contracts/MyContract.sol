@@ -7,8 +7,8 @@ import "./newToken.sol";
 contract MyContact {
     enum Status { ACTIVE, INACTIVE, SOLD }
 
-    address private nftContract = 0xd9145CCE52D386f254917e481eB44e9943F39138;
-    address private tokenContract = 0xd8b934580fcE35a11B58C6D73aDeE468a2833fa8;
+    address private nftContract = 0xd16B472C1b3AB8bc40C1321D7b33dB857e823f01;
+    address private tokenContract = 0xb31BA5cDC07A2EaFAF77c95294fd4aE27D04E9CA;
 
     struct Listing {
         uint id;
@@ -32,7 +32,7 @@ contract MyContact {
         Listing memory list = Listing(nftId, amount, msg.sender, price, Status.ACTIVE);
         _listingId ++;
         _listing[_listingId] = list;
-        n.customApprove(msg.sender, address(this), true);
+        // User needs to approve this contract address from Token Contract
         n.safeTransferFrom(msg.sender, address(this), nftId, amount, "");
     }
 
@@ -44,7 +44,7 @@ contract MyContact {
         require(amount_available >= amount, "Specified Amount not available");
 
         // transfer NFT back to owner
-        n.customApprove(address(this), msg.sender, true);
+        n.setApprovalForAll(msg.sender, true);
         n.safeTransferFrom(address(this), msg.sender, list.id, amount, "");
 
         // updating old listing
@@ -78,11 +78,12 @@ contract MyContact {
         address nft_owner = list.owner;
 
         // Sending NFT to buyer
-        n.customApprove(address(this), msg.sender, true);
+        n.setApprovalForAll(msg.sender, true);
         n.safeTransferFrom(address(this), msg.sender, list.id, amount, "");
 
         // Sending Tokens to seller
-        t.customTransfer(msg.sender, nft_owner, total_cost);
+        // User needs to increase the allowance of the contract for the total cost amount
+        t.transferFrom(msg.sender, nft_owner, total_cost);
 
         // updating old listing
         bool newListingRequired = false;

@@ -18,8 +18,4 @@ contract newNft is ERC1155 {
     function mint (uint id ,uint amount) public onlyOwner {
         _mint(msg.sender, id, amount, "");
     }
-
-    function customApprove(address caller, address reciever, bool approve) public {
-        _setApprovalForAll(caller, reciever, approve);
-    }
 }

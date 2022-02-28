@@ -21,8 +21,4 @@ contract Token is ERC20 {
     function mint (uint amount) public onlyOwner {
         _mint(msg.sender, amount);
     }
-
-    function customTransfer (address caller, address to, uint amount) public {
-        _transfer(caller, to, amount);
-    }
 }

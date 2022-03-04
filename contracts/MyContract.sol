@@ -5,10 +5,14 @@ import "./newPersonalNFT.sol";
 import "./newToken.sol";
 
 contract MyContact {
-    enum Status { ACTIVE, INACTIVE, SOLD }
+    address private nftContract;
+    address private tokenContract;
+    constructor(address nftAddress,address tokenAddress) {
+        nftContract = nftAddress;
+        tokenContract = tokenAddress;
+    }
 
-    address private nftContract = 0xd16B472C1b3AB8bc40C1321D7b33dB857e823f01;
-    address private tokenContract = 0xb31BA5cDC07A2EaFAF77c95294fd4aE27D04E9CA;
+    enum Status { ACTIVE, INACTIVE, SOLD }
 
     struct Listing {
         uint id;

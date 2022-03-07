@@ -2,7 +2,7 @@
 
 Status: WIP
 
-#Contracts
+<h2> Contracts </h2>
 
 Contents:
 1. ERC20 Token contract

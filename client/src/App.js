@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import './Styles.css';
 import { useEffect, useState } from 'react';
-import { init, mintToken } from './Web3Client'
+// import { init, mintToken } from './Web3Client'
+import AuthPage from './components/Auth';
 
 function App() {
 
-  const [mint, setMint] = useState(false);
+  let [auth_state, setAuthState] = useState(0)
 
-  function mintFun() {
-    mintToken().then((tx) => {
-      console.log(tx)
-      setMint(true);
-    }).catch((err) => {
-      console.log(err)
-    });
+  function changeAuthState() {
+    if(auth_state == 0) {
+      setAuthState(1);
+    } else {
+      setAuthState(0);
+    }
   }
-
-  return (
-    <div>
-      {!mint ? <button onClick={() => mintFun()}> Mint! </button> : <p>Successfull</p>}
+  
+    return (
+    <div className="root">
+      {auth_state == 0 ? <AuthPage.login clickMethod = { changeAuthState }/> : <AuthPage.signup clickMethod = { changeAuthState }/>}
     </div>
   );
 }

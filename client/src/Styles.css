@@ -31,3 +31,20 @@
     border-style: solid;
     border-color: black;
 }
+
+.para {
+    color: white;
+    text-align: left;
+}
+
+.card {
+    margin: 0;
+    width: fit-content;
+    height: fit-content;
+    background-color: grey;
+    padding-top: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    text-align: center;
+}

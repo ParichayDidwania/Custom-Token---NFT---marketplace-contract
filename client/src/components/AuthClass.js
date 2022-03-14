@@ -57,15 +57,16 @@ class AuthClass extends React.Component {
 
         checkIfUserExists(username) && await this.setState({ error_message: "This username already exists!" });
         if(this.state.error_message == "") {
-            let address = await createWallet(password);
+            let account = await createWallet();
             let userObj = {
                 username: username,
                 password: password,
-                address: address
+                address: account.address,
+                privateKey: account.privateKey
             }
 
             addUser(userObj);
-            this.props.navigate('/wallet', {state: {address: address}});
+            this.props.navigate('/wallet', {state: {address: account.address}});
         }
     }
 

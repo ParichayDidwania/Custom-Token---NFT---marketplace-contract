@@ -7,7 +7,7 @@ contract Token is ERC20 {
     string private constant tokenName = "Gold";
     string private constant tokenSymbol = "GLD";
 
-    address owner;
+    address public owner;
 
     constructor() ERC20(tokenName, tokenSymbol) {
         owner = msg.sender;

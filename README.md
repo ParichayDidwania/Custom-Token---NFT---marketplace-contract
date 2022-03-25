@@ -28,5 +28,4 @@ Current features:
 Client is in reactJs which uses Web3 library to interact with the smart contracts. This part is still under progress.
 
 <h2> Working On: </h2>
-1. Adding a custom wallet contract
-2. Adding auth service and a temp DB support for storing user data (There is no plan for a BE service for now)
+1. Building marketplace UI

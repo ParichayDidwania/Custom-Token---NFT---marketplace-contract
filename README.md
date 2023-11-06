@@ -12,7 +12,7 @@ Contents:
 <h3> ERC20 Token contract </h3>
 This is a simple ERC20 token contract which has all basic functionalities such as minting, balanceOf etc. This contract is called by the marketplace contract to handle transactions
 
-<h3> ERC1166 NFT contract </h3>
+<h3> ERC1155 NFT contract </h3>
 This is a simple ERC1155 NFT contract which has all basic functionalities such as minting, balanceOf etc. This contract is called by the marketplace contract to handle transactions
 
 <h3> Marketplace contract </h3>
